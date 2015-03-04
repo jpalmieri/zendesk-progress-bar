@@ -15,3 +15,16 @@
 	position: relative;
 	left: 4.25em;
 }
+
+.progress {
+  margin-bottom: 0;
+}
+
+#goal {
+  padding: 1% 5px 1% 5px;
+  width: 75%;
+}
+
+#enter-goal-btn {
+  width: 20%;
+}
