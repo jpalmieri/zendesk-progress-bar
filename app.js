@@ -102,7 +102,8 @@
 
       this.switchTo(template, {
         data: data,
-        weeklyGoal: weeklyGoal
+        weeklyGoal: weeklyGoal,
+        percentSolved: (data.count / weeklyGoal) * 100
       });
     },
 

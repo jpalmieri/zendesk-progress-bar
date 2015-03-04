@@ -1,4 +1,7 @@
 <div id="message"/>You've solved {{data.count}} tickets of your weekly goal of {{weeklyGoal}}.
-<br><meter class="meter" min=0 max={{weeklyGoal}} value={{data.count}}></meter></br>
+<br />
+<div class="progress progress-striped">
+  <div class="bar" style="width: {{percentSolved}}%;"></div>
+</div>
 Day <span id="days">1 2 3 4 5</span><br />
-<button id="change-goal-btn">Change Goal</button>
+<button id="change-goal-btn" class='btn btn-success'>Change Goal</button>
