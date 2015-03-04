@@ -1,0 +1,6 @@
+{
+  "app": {
+    "description":  "Progress bar showing solved tickets for agents.",
+    "name":         "Progress Bar"
+  }
+}

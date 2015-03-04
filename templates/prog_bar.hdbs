@@ -1,0 +1,4 @@
+<div id="message"/>You've solved {{data.count}} tickets of your weekly goal of {{weeklyGoal}}.
+<br><meter class="meter" min=0 max={{weeklyGoal}} value={{data.count}}></meter></br>
+Day <span id="days">1 2 3 4 5</span><br />
+<button id="change-goal-btn">Change Goal</button>

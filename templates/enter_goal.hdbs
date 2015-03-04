@@ -1,0 +1,2 @@
+Put your goal in here: <input id='goal' /><br />
+<button id="enter-goal-btn">Submit</button>
