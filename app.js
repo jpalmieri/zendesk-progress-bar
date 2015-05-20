@@ -30,44 +30,32 @@
       });
     },
 
-    dates: function() {
-      //get this week's date range, starting with monday and ending with sunday, parse
-      var d = new Date();
-      var curr_date = d.getDate();
-      var curr_month = d.getMonth();
-      var curr_year = d.getFullYear();
-      var curr_day = d.getDay();
-      var monday = null;
-      var sunday = null;
-      var monday_date = null;
-      var monday_month = null;
-      var sunday_date = null;
-      var sunday_month = null;
-      var endDate = null;
-      //determines workweek's monday and sunday dates based on current date and day
-      if (curr_day === 0) {
-        monday = new Date(curr_year, curr_month, curr_date - 6);
-        monday_date = monday.getDate();
-        monday_month = monday.getMonth() + 1;
-        sunday_date = curr_date;
-        sunday_month = curr_month + 1;
-        }
-      else {
-        curr_day--;
-        monday = new Date(curr_year, curr_month, curr_date - curr_day);
-        monday_date = monday.getDate();
-        monday_month = monday.getMonth() + 1;
-        sunday = new Date(curr_year, curr_month, curr_date - curr_day + 6);
-        sunday_date = sunday.getDate();
-        sunday_month = sunday.getMonth() + 1;
-        }
-      if (monday_month == 12 && sunday_month == 1) {
-        endDate = (curr_year + 1 + "-" + (sunday_month) + "-" + sunday_date);
-      } else {
-        endDate = (curr_year + "-" + (sunday_month) + "-" + sunday_date);
-      }
-      var startDate = (curr_year + "-" + (monday_month) + "-" + monday_date);
-      return [startDate, endDate];
+    // Return last Monday (or same day if it is a Monday)
+    getMonday: function(d) {
+      d = new Date(d);
+      var day = d.getDay(),
+        diff = d.getDate() - day + (day === 0 ? - 6:1);
+      return new Date(d.setDate(diff));
+    },
+
+    // Return upcoming Sunday (or same day if it is a Sunday)
+    getSunday: function(d) {
+      d = new Date(d);
+      var day = d.getDay(),
+        diff = d.getDate() - day + (day === 0 ? 0:7);
+      return new Date(d.setDate(diff));
+    },
+
+    getDateQuery: function() {
+      var startDate = this.getMonday(new Date());
+      console.log(startDate);
+      var endDate = this.getSunday(new Date());
+      console.log(endDate);
+
+      var startDateQuery = (startDate.getFullYear() + "-" + (startDate.getMonth()+1) + "-" + startDate.getDate());
+      var endDateQuery = (endDate.getFullYear() + "-" + (endDate.getMonth()+1) + "-" + endDate.getDate());
+
+      return [startDateQuery, endDateQuery];
     },
 
     getInfo: function() {
@@ -77,7 +65,7 @@
       }
       else {
         var assignee = '+assignee:' + this.currentUser().name();
-        var dates = this.dates();
+        var dates = this.getDateQuery();
 
         this.switchTo('loading');
 
