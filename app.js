@@ -30,31 +30,26 @@
       });
     },
 
-    // Return last Monday (or same day if it is a Monday)
-    getMonday: function(d) {
+    getLastSunday: function(d) {
       d = new Date(d);
       var day = d.getDay(),
-        diff = d.getDate() - day + (day === 0 ? - 6:1);
+        diff = d.getDate() - day + (day === 0 ? - 7:0);
       return new Date(d.setDate(diff));
     },
 
-    // Return upcoming Sunday (or same day if it is a Sunday)
-    getSunday: function(d) {
+    getUpcomingMonday: function(d) {
       d = new Date(d);
       var day = d.getDay(),
-        diff = d.getDate() - day + (day === 0 ? 0:7);
+        diff = d.getDate() - day + (day === 0 ? 1:8);
       return new Date(d.setDate(diff));
     },
 
     getDateQuery: function() {
-      var startDate = this.getMonday(new Date());
-      console.log(startDate);
-      var endDate = this.getSunday(new Date());
-      console.log(endDate);
-
+      var today = new Date();
+      var startDate = this.getLastSunday(today);
+      var endDate = this.getUpcomingMonday(today);
       var startDateQuery = (startDate.getFullYear() + "-" + (startDate.getMonth()+1) + "-" + startDate.getDate());
       var endDateQuery = (endDate.getFullYear() + "-" + (endDate.getMonth()+1) + "-" + endDate.getDate());
-
       return [startDateQuery, endDateQuery];
     },
 
