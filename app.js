@@ -34,7 +34,7 @@
     getMonday: function(d) {
       d = new Date(d);
       var day = d.getDay(),
-        diff = d.getDate() - day + (day === 0 ? - 6:1);
+        diff = d.getDate() - day + (day === 0 ? - 6:1) - 1;
       return new Date(d.setDate(diff));
     },
 
@@ -42,7 +42,7 @@
     getSunday: function(d) {
       d = new Date(d);
       var day = d.getDay(),
-        diff = d.getDate() - day + (day === 0 ? 0:7);
+        diff = d.getDate() - day + (day === 0 ? 0:7) + 1;
       return new Date(d.setDate(diff));
     },
 
