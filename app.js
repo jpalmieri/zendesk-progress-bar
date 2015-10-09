@@ -2,7 +2,7 @@
 
   return {
     events: {
-      'app.activated':            'getInfo',
+      'app.created':              'init',
       'click button.enter-goal':  'enterGoal',
       'click button.change-goal': 'showGoal',
       'solvedTicketsReqest.done': 'showBar',
@@ -33,11 +33,11 @@
 
     enterGoal: function() {
       this.store( 'goal', this.$('input.enter-goal').val() );
-      this.getInfo();
+      this.init();
       return false;
     },
 
-    getInfo: function() {
+    init: function() {
       if ( !this.store('goal') ){
         this.showGoal();
       } else {
