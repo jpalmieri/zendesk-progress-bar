@@ -7,5 +7,5 @@
 Day <span class='days'>1 2 3 4 5</span><br />
 <button class='change-goal btn btn-success'>Change Goal</button>
 <small class='pull-right'>by
-  <a href='{{author.website}}' target='_blank' class='muted'>{{author.name}}</a>&nbsp;&nbsp;
+  <a href='https://github.com/jpalmieri' target='_blank' class='muted'>{{author.name}}</a>&nbsp;&nbsp;
 </small>
