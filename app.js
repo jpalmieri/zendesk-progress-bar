@@ -30,6 +30,34 @@
       });
     },
 
+    showBar: function(data) {
+      var solvedTickets = data.count;
+      var weeklyGoal = this.store('goal');
+      var template = '';
+
+      if (solvedTickets >= weeklyGoal) {
+        template = 'congrats';
+      }
+      else {
+        template = 'prog_bar';
+      }
+
+      this.switchTo(template, {
+        data: data,
+        weeklyGoal: weeklyGoal,
+        percentSolved: (data.count / weeklyGoal) * 100
+      });
+    },
+
+    showError: function() {
+      this.switchTo('error');
+    },
+
+    enterGoal: function() {
+      this.store( 'goal', this.$("#goal").val() );
+      this.getInfo();
+    },
+
     getLastSunday: function(d) {
       d = new Date(d);
       var day = d.getDay(),
@@ -74,36 +102,6 @@
         request.done(this.showBar);
         request.fail(this.showError);
       }
-    },
-
-    showBar: function(data) {
-
-      var solvedTickets = data.count;
-      var weeklyGoal = this.store('goal');
-      var template = '';
-
-      if (solvedTickets >= weeklyGoal) {
-        template = 'congrats';
-      }
-      else {
-        template = 'prog_bar';
-      }
-
-      this.switchTo(template, {
-        data: data,
-        weeklyGoal: weeklyGoal,
-        percentSolved: (data.count / weeklyGoal) * 100
-      });
-    },
-
-    showError: function() {
-      this.switchTo('error');
-    },
-
-    enterGoal: function() {
-      this.$("#goal").val();
-      this.store('goal', this.$( "#goal").val() );
-      this.getInfo();
     }
 
   };
