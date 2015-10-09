@@ -30,15 +30,14 @@
       });
     },
 
-    showBar: function(data) {
-      var solvedTickets = data.count;
+    showBar: function(solvedTickets) {
       var weeklyGoal = this.store('goal');
-      var template = (solvedTickets >= weeklyGoal) ? 'congrats' : 'prog_bar';
+      var template = (solvedTickets.count >= weeklyGoal) ? 'congrats' : 'prog_bar';
 
       this.switchTo(template, {
-        data: data,
+        solvedTickets: solvedTickets,
         weeklyGoal: weeklyGoal,
-        percentSolved: (data.count / weeklyGoal) * 100
+        percentSolved: (solvedTickets.count / weeklyGoal) * 100
       });
     },
 

@@ -1,4 +1,4 @@
-<div id="message"/>You've solved {{data.count}} tickets of your weekly goal of {{weeklyGoal}}.
+<div id="message"/>You've solved {{solvedTickets.count}} tickets of your weekly goal of {{weeklyGoal}}.
 <br />
 <div class="progress progress-striped">
   <div class="bar" style="width: {{percentSolved}}%;"></div>
