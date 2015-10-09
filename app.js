@@ -25,21 +25,6 @@
       this.switchTo('enter_goal');
     },
 
-    showBar: function(solvedTickets) {
-      var weeklyGoal = this.store('goal');
-      var template = (solvedTickets.count >= weeklyGoal) ? 'congrats' : 'prog_bar';
-
-      this.switchTo(template, {
-        solvedTickets: solvedTickets,
-        weeklyGoal: weeklyGoal,
-        percentSolved: (solvedTickets.count / weeklyGoal) * 100
-      });
-    },
-
-    showError: function() {
-      this.switchTo('error');
-    },
-
     enterGoal: function() {
       this.store( 'goal', this.$('input.enter-goal').val() );
       this.getInfo();
@@ -62,6 +47,21 @@
         request.done(this.showBar);
         request.fail(this.showError);
       }
+    },
+
+    showBar: function(solvedTickets) {
+      var weeklyGoal = this.store('goal');
+      var template = (solvedTickets.count >= weeklyGoal) ? 'congrats' : 'prog_bar';
+
+      this.switchTo(template, {
+        solvedTickets: solvedTickets,
+        weeklyGoal: weeklyGoal,
+        percentSolved: (solvedTickets.count / weeklyGoal) * 100
+      });
+    },
+
+    showError: function() {
+      this.switchTo('error');
     },
 
     // Date helpers
