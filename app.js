@@ -64,6 +64,7 @@
 
       this.switchTo(template, {
         solvedTickets: solvedTickets,
+        ticketsPlural: !solvedTickets.count === 1,
         weeklyGoal: weeklyGoal,
         percentSolved: (solvedTickets.count / weeklyGoal) * 100
       });
