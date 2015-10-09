@@ -20,14 +20,7 @@
     },
 
     showGoal: function() {
-      var a = this;
       this.switchTo('enter_goal');
-      this.$('input').on('keypress', function (e) {
-        if (e.which == 13) {
-          e.preventDefault();
-          a.enterGoal();
-        }
-      });
     },
 
     showBar: function(solvedTickets) {
@@ -48,6 +41,7 @@
     enterGoal: function() {
       this.store( 'goal', this.$("#goal").val() );
       this.getInfo();
+      return false;
     },
 
     getLastSunday: function(d) {

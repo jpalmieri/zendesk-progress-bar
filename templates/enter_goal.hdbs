@@ -1,4 +1,4 @@
-<div class='enter-goal form-inline'> 
+<form class='enter-goal form-inline'>
   <input type="number" id='goal' placeholder='Enter ticket goal for this week'/>
   <button id="enter-goal-btn" class='btn btn-success'>Submit</button>
-</div>
+</form>
