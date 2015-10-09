@@ -8,15 +8,17 @@
     },
 
     requests: {
-
       solvedTicketInfo: function(assignee, startDate, endDate) {
         return {
-          url: '/api/v2/search.json?query=solved>' + startDate + '+solved<' + endDate + '+assignee:' + assignee + '+type:ticket',
+          url: '/api/v2/search.json',
+          data: 'query=solved>' + startDate +
+                '+solved<' + endDate +
+                '+assignee:' + assignee +
+                '+type:ticket',
           type: 'GET',
           dataType: 'json'
         };
       }
-
     },
 
     showGoal: function() {
