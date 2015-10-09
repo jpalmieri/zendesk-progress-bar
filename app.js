@@ -32,8 +32,14 @@
     },
 
     enterGoal: function() {
-      this.store( 'goal', this.$('input.enter-goal').val() );
-      this.init();
+      var goal = this.$('input.enter-goal').val();
+      if ( goal < 1 || !(goal % 1 === 0) )  {
+        services.notify("Huh? Please enter a positive integer.", 'alert');
+        this.showGoal();
+      } else {
+        this.store( 'goal', this.$('input.enter-goal').val() );
+        this.init();
+      }
       return false;
     },
 
