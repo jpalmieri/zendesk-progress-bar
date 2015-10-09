@@ -5,8 +5,12 @@
   border: 1px solid #C0C0C0;
 }
 
-.message {
+.message, .spinner {
 	padding-top: 10px;
+}
+
+.message, .days-label, .congrats {
+  padding-bottom: 5px;
 }
 
 span.days {
@@ -17,7 +21,7 @@ span.days {
 }
 
 .progress {
-  margin-bottom: 0;
+  margin-bottom: 5px;
 }
 
 .progress .bar {
@@ -31,4 +35,8 @@ input.enter-goal {
 
 button.enter-goal {
   width: 20%;
+}
+
+.congrats img {
+  width: 100%;
 }
