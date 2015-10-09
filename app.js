@@ -45,11 +45,9 @@
     },
 
     getInfo: function() {
-      var goal = this.store('goal');
-      if (!goal){
+      if ( !this.store('goal') ){
         this.showGoal();
-      }
-      else {
+      } else {
         var assignee = this.currentUser().email();
         var today = new Date();
 
