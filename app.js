@@ -102,7 +102,7 @@
 
     enterGoal: function() {
       this.$("#goal").val();
-      this.store('goal', this.$("#goal").val());
+      this.store('goal', this.$( "#goal").val() );
       this.getInfo();
     }
 
