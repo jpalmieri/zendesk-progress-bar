@@ -11,7 +11,7 @@
 
       solvedTicketInfo: function(assignee, startDate, endDate) {
         return {
-          url: '/api/v2/search.json?query=solved>' + startDate + '+solved<' + endDate + assignee + '+type:ticket',
+          url: '/api/v2/search.json?query=solved>' + startDate + '+solved<' + endDate + '+assignee:' + assignee + '+type:ticket',
           type: 'GET',
           dataType: 'json'
         };
@@ -62,7 +62,7 @@
         this.showGoal();
       }
       else {
-        var assignee = '+assignee:' + this.currentUser().email();
+        var assignee = this.currentUser().email();
         var today = new Date();
 
         this.switchTo('loading');
