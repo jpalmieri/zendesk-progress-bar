@@ -33,14 +33,7 @@
     showBar: function(data) {
       var solvedTickets = data.count;
       var weeklyGoal = this.store('goal');
-      var template = '';
-
-      if (solvedTickets >= weeklyGoal) {
-        template = 'congrats';
-      }
-      else {
-        template = 'prog_bar';
-      }
+      var template = (solvedTickets >= weeklyGoal) ? 'congrats' : 'prog_bar';
 
       this.switchTo(template, {
         data: data,
