@@ -62,7 +62,7 @@
         this.showGoal();
       }
       else {
-        var assignee = '+assignee:' + this.currentUser().name();
+        var assignee = '+assignee:' + this.currentUser().email();
         var today = new Date();
 
         this.switchTo('loading');
