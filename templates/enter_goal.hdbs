@@ -1,3 +1,6 @@
+<div class='message'>
+  <h4>{{setting 'name'}}</h4>
+</div>
 <form class='form-inline'>
   <input type='number' min='1' class='enter-goal' placeholder='Enter ticket goal for this week'/>
   <button class='enter-goal btn btn-success'>Submit</button>
