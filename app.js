@@ -44,6 +44,28 @@
       return false;
     },
 
+    getInfo: function() {
+      var goal = this.store('goal');
+      if (!goal){
+        this.showGoal();
+      }
+      else {
+        var assignee = this.currentUser().email();
+        var today = new Date();
+
+        this.switchTo('loading');
+
+        var request = this.ajax(
+          'solvedTicketInfo', assignee,
+          this.getStartDateQuery(today), this.getEndDateQuery(today)
+        );
+        request.done(this.showBar);
+        request.fail(this.showError);
+      }
+    },
+
+    // Date helpers
+
     getLastSunday: function(d) {
       d = new Date(d);
       var day = d.getDay(),
@@ -68,28 +90,6 @@
 
     getEndDateQuery: function(d) {
       return this.getDateQuery( this.getUpcomingMonday(d) );
-    },
-
-    getInfo: function() {
-      var goal = this.store('goal');
-      if (!goal){
-        this.showGoal();
-      }
-      else {
-        var assignee = this.currentUser().email();
-        var today = new Date();
-
-        this.switchTo('loading');
-
-        var request = this.ajax(
-          'solvedTicketInfo', assignee,
-          this.getStartDateQuery(today), this.getEndDateQuery(today)
-        );
-        request.done(this.showBar);
-        request.fail(this.showError);
-      }
     }
-
   };
-
 }());
