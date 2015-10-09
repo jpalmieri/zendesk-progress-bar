@@ -4,11 +4,13 @@
     events: {
       'app.activated':            'getInfo',
       'click button.enter-goal':  'enterGoal',
-      'click button.change-goal': 'showGoal'
+      'click button.change-goal': 'showGoal',
+      'solvedTicketsReqest.done': 'showBar',
+      'solvedTicketsReqest.fail': 'showError'
     },
 
     requests: {
-      solvedTicketInfo: function(assignee, startDate, endDate) {
+      solvedTicketsReqest: function(assignee, startDate, endDate) {
         return {
           url: '/api/v2/search.json',
           data: 'query=solved>' + startDate +
@@ -19,6 +21,10 @@
           dataType: 'json'
         };
       }
+    },
+
+    getSolvedTickets: function(assignee, startDate, endDate) {
+      this.ajax('solvedTicketsReqest', assignee, startDate, endDate);
     },
 
     showGoal: function() {
@@ -35,17 +41,14 @@
       if ( !this.store('goal') ){
         this.showGoal();
       } else {
-        var assignee = this.currentUser().email();
-        var today = new Date();
-
         this.switchTo('loading');
 
-        var request = this.ajax(
-          'solvedTicketInfo', assignee,
-          this.getStartDateQuery(today), this.getEndDateQuery(today)
+        var today = new Date();
+        this.getSolvedTickets(
+          this.currentUser().email(),
+          this.getStartDateQuery(today),
+          this.getEndDateQuery(today)
         );
-        request.done(this.showBar);
-        request.fail(this.showError);
       }
     },
 
