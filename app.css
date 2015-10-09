@@ -5,11 +5,11 @@
   border: 1px solid #C0C0C0;
 }
 
-#message {
+.message {
 	padding-top: 10px;
 }
 
-#days {
+span.days {
 	font-size: .7em;
 	word-spacing: 6.6em;
 	position: relative;
@@ -24,11 +24,11 @@
   background-color: #78A300;
 }
 
-#goal {
+input.enter-goal {
   padding: 1% 5px 1% 5px;
   width: 75%;
 }
 
-#enter-goal-btn {
+button.enter-goal {
   width: 20%;
 }

@@ -1,10 +1,11 @@
-<div id="message"/>You've solved {{solvedTickets.count}} tickets of your weekly goal of {{weeklyGoal}}.
-<br />
-<div class="progress progress-striped">
-  <div class="bar" style="width: {{percentSolved}}%;"></div>
+<div class='message'>
+  You've solved {{solvedTickets.count}} tickets of your weekly goal of {{weeklyGoal}}.
 </div>
-Day <span id="days">1 2 3 4 5</span><br />
-<button id="change-goal-btn" class='btn btn-success'>Change Goal</button>
-<small class="pull-right">by
-  <a href="{{author.website}}" target="_blank" class="muted">{{author.name}}</a>&nbsp;&nbsp;
+<div class='progress progress-striped'>
+  <div class='bar' style='width: {{percentSolved}}%;'></div>
+</div>
+Day <span class='days'>1 2 3 4 5</span><br />
+<button class='change-goal btn btn-success'>Change Goal</button>
+<small class='pull-right'>by
+  <a href='{{author.website}}' target='_blank' class='muted'>{{author.name}}</a>&nbsp;&nbsp;
 </small>

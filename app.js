@@ -2,9 +2,9 @@
 
   return {
     events: {
-      'app.activated':'getInfo',
-      'click #enter-goal-btn': 'enterGoal',
-      'click #change-goal-btn':'showGoal'
+      'app.activated':            'getInfo',
+      'click button.enter-goal':  'enterGoal',
+      'click button.change-goal': 'showGoal'
     },
 
     requests: {
@@ -41,7 +41,7 @@
     },
 
     enterGoal: function() {
-      this.store( 'goal', this.$("#goal").val() );
+      this.store( 'goal', this.$('input.enter-goal').val() );
       this.getInfo();
       return false;
     },

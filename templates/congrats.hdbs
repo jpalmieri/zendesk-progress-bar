@@ -1,4 +1,9 @@
-<div id="message">You met your weekly goal! You've solved {{solvedTickets.count}} tickets!</div>
-<a href="http://www.addictinggames.com/puzzle-games/worldshardestgame3-game.jsp"><h3>Hooray!</h3></a>
-<div id="cats"><img src="http://4.bp.blogspot.com/-fYJrkNWec08/T9EYOmNGPNI/AAAAAAAAC04/UtdRRM8a3hc/s640/cat-fat-dancing-cat-gif.gif"/></div><br />
-<button id="change-goal-btn" class="btn btn-success">Change Goal</button>
+<div class='message'>
+  You met your weekly goal! You've solved {{solvedTickets.count}} tickets!
+</div>
+<a href='http://www.addictinggames.com/puzzle-games/worldshardestgame3-game.jsp'><h3>Hooray!</h3></a>
+<div>
+  <img src='http://4.bp.blogspot.com/-fYJrkNWec08/T9EYOmNGPNI/AAAAAAAAC04/UtdRRM8a3hc/s640/cat-fat-dancing-cat-gif.gif'/>
+</div>
+<br />
+<button class='change-goal btn btn-success'>Change Goal</button>
