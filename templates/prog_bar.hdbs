@@ -5,3 +5,6 @@
 </div>
 Day <span id="days">1 2 3 4 5</span><br />
 <button id="change-goal-btn" class='btn btn-success'>Change Goal</button>
+<small class="pull-right">by
+  <a href="{{author.website}}" target="_blank" class="muted">{{author.name}}</a>&nbsp;&nbsp;
+</small>

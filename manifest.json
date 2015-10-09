@@ -1,8 +1,9 @@
 {
   "name": "Progress Bar",
   "author": {
-    "name": "Joe Palmieri",
-    "email": "jpalmieri@lumoslabs.com"
+    "name":     "Joe Palmieri",
+    "email":    "jpalmieri@lumoslabs.com",
+    "website":  "https://github.com/jpalmieri"
   },
   "defaultLocale": "en",
   "private": true,
