@@ -1,7 +1,6 @@
 <div class='message'>
-  You met your weekly goal! You've solved {{solvedTickets.count}}
-   ticket{{#if ticketsPlural}}s{{/if}}!
-  <h3>Hooray!</h3>
+  <p>You met your weekly goal! You've solved {{solvedTickets.count}}
+   ticket{{#if ticketsPlural}}s{{/if}}!</p>
 </div>
 <div class='congrats'>
   <img src='{{congratsImg}}'/>

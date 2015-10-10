@@ -1,7 +1,7 @@
 <div class='message'>
-  You've solved {{solvedTickets.count}}
+  <p>You've solved {{solvedTickets.count}}
   ticket{{#if ticketsPlural}}s{{/if}}
-  of your weekly goal of {{weeklyGoal}}.
+  of your weekly goal of {{weeklyGoal}}.</p>
 </div>
 <div class='progress progress-striped'>
   <div class='bar' style='width: {{percentSolved}}%;'></div>
