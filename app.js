@@ -33,24 +33,27 @@
     getLastSunday: function(d) {
       d = new Date(d);
       var day = d.getDay(),
-        diff = d.getDate() - day + (day === 0 ? - 7:0);
-      return new Date(d.setDate(diff));
+        diff = d.getDate() - day + (day === 0 ? -7 : 0);
+      return new Date( d.setDate(diff) );
     },
 
     getUpcomingMonday: function(d) {
       d = new Date(d);
       var day = d.getDay(),
-        diff = d.getDate() - day + (day === 0 ? 1:8);
-      return new Date(d.setDate(diff));
+        diff = d.getDate() - day + (day === 0 ? 1 : 8);
+      return new Date( d.setDate(diff) );
     },
 
-    getDateQuery: function() {
-      var today = new Date();
-      var startDate = this.getLastSunday(today);
-      var endDate = this.getUpcomingMonday(today);
-      var startDateQuery = (startDate.getFullYear() + "-" + (startDate.getMonth()+1) + "-" + startDate.getDate());
-      var endDateQuery = (endDate.getFullYear() + "-" + (endDate.getMonth()+1) + "-" + endDate.getDate());
-      return [startDateQuery, endDateQuery];
+    getDateQuery: function(d) {
+      return ( d.getFullYear() + "-" + ( d.getMonth() + 1 ) + "-" + d.getDate() );
+    },
+
+    getStartDateQuery: function(d) {
+      return this.getDateQuery( this.getLastSunday(d) );
+    },
+
+    getEndDateQuery: function(d) {
+      return this.getDateQuery( this.getUpcomingMonday(d) );
     },
 
     getInfo: function() {
@@ -60,11 +63,14 @@
       }
       else {
         var assignee = '+assignee:' + this.currentUser().name();
-        var dates = this.getDateQuery();
+        var today = new Date();
 
         this.switchTo('loading');
 
-        var request = this.ajax('solvedTicketInfo', assignee, dates[0], dates[1]);
+        var request = this.ajax(
+          'solvedTicketInfo', assignee,
+          this.getStartDateQuery(today), this.getEndDateQuery(today)
+        );
         request.done(this.showBar);
         request.fail(this.showError);
       }
