@@ -3,8 +3,8 @@
   return {
     events: {
       'app.created':              'init',
-      'click button.enter-goal':  'enterGoal',
-      'click button.change-goal': 'showGoal',
+      'click button.enter-goal':  'saveGoal',
+      'click button.change-goal': 'showEnterGoal',
       'solvedTicketsReqest.done': 'showBar',
       'solvedTicketsReqest.fail': 'showError'
     },
@@ -27,15 +27,15 @@
       this.ajax('solvedTicketsReqest', assignee, startDate, endDate);
     },
 
-    showGoal: function() {
+    showEnterGoal: function() {
       this.switchTo('enter_goal');
     },
 
-    enterGoal: function() {
+    saveGoal: function() {
       var goal = this.$('input.enter-goal').val();
       if ( goal < 1 || !(goal % 1 === 0) )  {
         services.notify("Huh? Please enter a positive integer.", 'alert');
-        this.showGoal();
+        this.showEnterGoal();
       } else {
         this.store( 'goal', this.$('input.enter-goal').val() );
         this.init();
@@ -45,7 +45,7 @@
 
     init: function() {
       if ( !this.store('goal') ){
-        this.showGoal();
+        this.showEnterGoal();
       } else {
         this.switchTo('loading');
 
