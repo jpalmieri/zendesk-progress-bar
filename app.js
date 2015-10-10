@@ -66,12 +66,26 @@
         solvedTickets: solvedTickets,
         ticketsPlural: !solvedTickets.count === 1,
         weeklyGoal: weeklyGoal,
-        percentSolved: (solvedTickets.count / weeklyGoal) * 100
+        percentSolved: (solvedTickets.count / weeklyGoal) * 100,
+        congratsImg: this.getRandomCongratsImg()
       });
     },
 
     showError: function() {
       this.switchTo('error');
+    },
+
+    getRandomCongratsImg: function() {
+      return _.sample([
+        this.assetURL("congrats_leo.gif"),
+        this.assetURL("congrats_pandemonium.gif"),
+        this.assetURL("congrats_reggie.gif"),
+        this.assetURL("congrats_shia.gif"),
+        this.assetURL("congrats_slow_clap.gif"),
+        this.assetURL("congrats_taxi_driver.gif"),
+        this.assetURL("congrats_yeah.gif"),
+        this.assetURL("congrats_zoolander.gif")
+      ]);
     },
 
     // Date helpers

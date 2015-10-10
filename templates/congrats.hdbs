@@ -4,6 +4,6 @@
   <h3>Hooray!</h3>
 </div>
 <div class='congrats'>
-  <img src='http://4.bp.blogspot.com/-fYJrkNWec08/T9EYOmNGPNI/AAAAAAAAC04/UtdRRM8a3hc/s640/cat-fat-dancing-cat-gif.gif'/>
+  <img src='{{congratsImg}}'/>
 </div>
 <button class='change-goal btn btn-success'>Change Goal</button>
