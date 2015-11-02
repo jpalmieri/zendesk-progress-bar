@@ -1,7 +1,15 @@
-<div id="message"/>You've solved {{data.count}} tickets of your weekly goal of {{weeklyGoal}}.
-<br />
-<div class="progress progress-striped">
-  <div class="bar" style="width: {{percentSolved}}%;"></div>
+<div class='message'>
+  <p>You've solved {{solvedTickets.count}}
+  ticket{{#if ticketsPlural}}s{{/if}}
+  of your weekly goal of {{weeklyGoal}}.</p>
 </div>
-Day <span id="days">1 2 3 4 5</span><br />
-<button id="change-goal-btn" class='btn btn-success'>Change Goal</button>
+<div class='progress progress-striped'>
+  <div class='bar' style='width: {{percentSolved}}%;'></div>
+</div>
+<div class='days-label'>
+  Day <span class='days'>1 2 3 4 5</span>
+</div>
+<small class='pull-right'>by
+  <a href='https://github.com/jpalmieri' target='_blank' class='muted'>{{author.name}}</a>
+</small>
+<button class='change-goal btn btn-success'>Change Goal</button>

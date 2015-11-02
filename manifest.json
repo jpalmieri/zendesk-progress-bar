@@ -1,12 +1,13 @@
 {
-  "name": "Progress Bar",
+  "name": "Solved Ticket Progress Bar",
   "author": {
-    "name": "Joe Palmieri",
-    "email": "jpalmieri@lumoslabs.com"
+    "name":     "Joe Palmieri",
+    "email":    "jpalmieri@lumoslabs.com",
+    "website":  "https://github.com/jpalmieri"
   },
   "defaultLocale": "en",
   "private": true,
   "location": "ticket_sidebar",
   "version": "1.0",
-  "frameworkVersion": "0.5"
+  "frameworkVersion": "1.0"
 }

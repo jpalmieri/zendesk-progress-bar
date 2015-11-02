@@ -2,33 +2,93 @@
 
   return {
     events: {
-      'app.activated':'getInfo',
-      'click #enter-goal-btn': 'enterGoal',
-      'click #change-goal-btn':'showGoal'
+      'app.created':              'init',
+      'click button.enter-goal':  'saveGoal',
+      'click button.change-goal': 'showEnterGoal',
+      'solvedTicketsReqest.done': 'showBar',
+      'solvedTicketsReqest.fail': 'showError'
     },
 
     requests: {
-
-      solvedTicketInfo: function(assignee, startDate, endDate) {
+      solvedTicketsReqest: function(assignee, startDate, endDate) {
         return {
-          url: '/api/v2/search.json?query=solved>' + startDate + '+solved<' + endDate + assignee + '+type:ticket',
+          url: '/api/v2/search.json',
+          data: 'query=solved>' + startDate +
+                '+solved<' + endDate +
+                '+assignee:' + assignee +
+                '+type:ticket',
           type: 'GET',
           dataType: 'json'
         };
       }
-
     },
 
-    showGoal: function() {
-      var a = this;
+    getSolvedTickets: function(assignee, startDate, endDate) {
+      this.ajax('solvedTicketsReqest', assignee, startDate, endDate);
+    },
+
+    showEnterGoal: function() {
       this.switchTo('enter_goal');
-      this.$('input').on('keypress', function (e) {
-        if (e.which == 13) {
-          e.preventDefault();
-          a.enterGoal();
-        }
+    },
+
+    saveGoal: function() {
+      var goal = this.$('input.enter-goal').val();
+      if ( goal < 1 || goal % 1 !== 0 )  {
+        services.notify("Huh? Please enter a positive integer.", 'alert');
+        this.showEnterGoal();
+      } else {
+        this.store( 'goal', this.$('input.enter-goal').val() );
+        this.init();
+      }
+      return false;
+    },
+
+    init: function() {
+      if ( !this.store('goal') ){
+        this.showEnterGoal();
+      } else {
+        this.switchTo('loading');
+
+        var today = new Date();
+        this.getSolvedTickets(
+          this.currentUser().email(),
+          this.getStartDateQuery(today),
+          this.getEndDateQuery(today)
+        );
+      }
+    },
+
+    showBar: function(solvedTickets) {
+      var weeklyGoal = this.store('goal');
+      var template = (solvedTickets.count >= weeklyGoal) ? 'congrats' : 'prog_bar';
+
+      this.switchTo(template, {
+        solvedTickets: solvedTickets,
+        ticketsPlural: solvedTickets.count != 1,
+        weeklyGoal: weeklyGoal,
+        percentSolved: (solvedTickets.count / weeklyGoal) * 100,
+        congratsImg: this.getRandomCongratsImg()
       });
     },
+
+    showError: function() {
+      this.switchTo('error');
+    },
+
+    getRandomCongratsImg: function() {
+      return _.sample([
+        "https://media.giphy.com/media/OdVug9ZRk8sqA/giphy.gif",
+        "http://www.reactiongifs.com/r/d8DEOtY.gif",
+        "http://www.reactiongifs.com/wp-content/uploads/2013/06/kid-deal.gif",
+        "http://www.reactiongifs.com/r/shia.gif",
+        "https://media.giphy.com/media/GQnsaAWZ8ty00/giphy.gif",
+        "https://media.giphy.com/media/TItexWpxELSBa/giphy.gif",
+        "https://media.giphy.com/media/DKnMqdm9i980E/giphy.gif",
+        "http://www.reactiongifs.com/wp-content/uploads/2013/04/lebowski1.gif"
+      ]);
+    },
+
+    // Date helpers
 
     getLastSunday: function(d) {
       d = new Date(d);
@@ -54,58 +114,6 @@
 
     getEndDateQuery: function(d) {
       return this.getDateQuery( this.getUpcomingMonday(d) );
-    },
-
-    getInfo: function() {
-      var goal = this.store('goal');
-      if (!goal){
-        this.showGoal();
-      }
-      else {
-        var assignee = '+assignee:' + this.currentUser().name();
-        var today = new Date();
-
-        this.switchTo('loading');
-
-        var request = this.ajax(
-          'solvedTicketInfo', assignee,
-          this.getStartDateQuery(today), this.getEndDateQuery(today)
-        );
-        request.done(this.showBar);
-        request.fail(this.showError);
-      }
-    },
-
-    showBar: function(data) {
-
-      var solvedTickets = data.count;
-      var weeklyGoal = this.store('goal');
-      var template = '';
-
-      if (solvedTickets >= weeklyGoal) {
-        template = 'congrats';
-      }
-      else {
-        template = 'prog_bar';
-      }
-
-      this.switchTo(template, {
-        data: data,
-        weeklyGoal: weeklyGoal,
-        percentSolved: (data.count / weeklyGoal) * 100
-      });
-    },
-
-    showError: function() {
-      this.switchTo('error');
-    },
-
-    enterGoal: function() {
-      this.$("#goal").val();
-      this.store('goal', this.$("#goal").val());
-      this.getInfo();
     }
-
   };
-
 }());
