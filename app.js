@@ -77,14 +77,14 @@
 
     getRandomCongratsImg: function() {
       return _.sample([
-        this.assetURL("congrats_leo.gif"),
-        this.assetURL("congrats_pandemonium.gif"),
-        this.assetURL("congrats_reggie.gif"),
-        this.assetURL("congrats_shia.gif"),
-        this.assetURL("congrats_slow_clap.gif"),
-        this.assetURL("congrats_taxi_driver.gif"),
-        this.assetURL("congrats_yeah.gif"),
-        this.assetURL("congrats_zoolander.gif")
+        "https://media.giphy.com/media/OdVug9ZRk8sqA/giphy.gif",
+        "http://www.reactiongifs.com/r/d8DEOtY.gif",
+        "http://www.reactiongifs.com/wp-content/uploads/2013/06/kid-deal.gif",
+        "http://www.reactiongifs.com/r/shia.gif",
+        "https://media.giphy.com/media/GQnsaAWZ8ty00/giphy.gif",
+        "https://media.giphy.com/media/TItexWpxELSBa/giphy.gif",
+        "https://media.giphy.com/media/DKnMqdm9i980E/giphy.gif",
+        "http://www.reactiongifs.com/wp-content/uploads/2013/04/lebowski1.gif"
       ]);
     },
 
