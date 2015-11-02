@@ -33,7 +33,7 @@
 
     saveGoal: function() {
       var goal = this.$('input.enter-goal').val();
-      if ( goal < 1 || !(goal % 1 === 0) )  {
+      if ( goal < 1 || goal % 1 !== 0 )  {
         services.notify("Huh? Please enter a positive integer.", 'alert');
         this.showEnterGoal();
       } else {
@@ -64,7 +64,7 @@
 
       this.switchTo(template, {
         solvedTickets: solvedTickets,
-        ticketsPlural: !solvedTickets.count === 1,
+        ticketsPlural: solvedTickets.count != 1,
         weeklyGoal: weeklyGoal,
         percentSolved: (solvedTickets.count / weeklyGoal) * 100,
         congratsImg: this.getRandomCongratsImg()
