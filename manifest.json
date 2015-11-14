@@ -3,10 +3,10 @@
   "author": {
     "name":     "Joe Palmieri",
     "email":    "jpalmieri@lumoslabs.com",
-    "website":  "https://github.com/jpalmieri"
+    "url":  "https://github.com/jpalmieri"
   },
   "defaultLocale": "en",
-  "private": true,
+  "private": false,
   "location": "ticket_sidebar",
   "version": "0.1.2",
   "frameworkVersion": "1.0"
