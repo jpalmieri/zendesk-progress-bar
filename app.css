@@ -32,6 +32,7 @@ input.enter-goal {
 
 button.enter-goal {
   width: 20%;
+  margin-top: 0;
 }
 
 .congrats img {

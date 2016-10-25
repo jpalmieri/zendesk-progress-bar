@@ -5,4 +5,7 @@
 <div class='congrats'>
   <img src='{{congratsImg}}'/>
 </div>
+<small class='pull-right author-link'>by
+  <a href='https://github.com/jpalmieri' target='_blank' class='muted'>{{author.name}}</a>
+</small>
 <button class='change-goal btn btn-success'>Change Goal</button>
