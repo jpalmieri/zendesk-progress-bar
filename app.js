@@ -49,11 +49,10 @@
       } else {
         this.switchTo('loading');
 
-        var today = new Date();
         this.getSolvedTickets(
           this.currentUser().email(),
-          this.getStartDateQuery(today),
-          this.getEndDateQuery(today)
+          this.getStartDateQuery(),
+          this.getEndDateQuery()
         );
       }
     },
@@ -90,30 +89,32 @@
 
     // Date helpers
 
-    getLastSunday: function(d) {
-      d = new Date(d);
-      var day = d.getDay(),
-        diff = d.getDate() - day + (day === 0 ? -7 : 0);
-      return new Date( d.setDate(diff) );
+    getLastSunday: function() {
+      var today = new Date(),
+          sunday = 0,
+          offset = today.getDay() === sunday ? -7 : 0,
+          startDate = today.getDate() - today.getDay() + offset;
+      return new Date( today.setDate(startDate) );
     },
 
-    getUpcomingMonday: function(d) {
-      d = new Date(d);
-      var day = d.getDay(),
-        diff = d.getDate() - day + (day === 0 ? 1 : 8);
-      return new Date( d.setDate(diff) );
+    getUpcomingMonday: function() {
+      var today = new Date(),
+          sunday = 0,
+          offset = today.getDay() === sunday ? 1 : 8,
+          endDate = today.getDate() - today.getDay() + offset;
+      return new Date( today.setDate(endDate) );
     },
 
     getDateQuery: function(d) {
       return ( d.getFullYear() + "-" + ( d.getMonth() + 1 ) + "-" + d.getDate() );
     },
 
-    getStartDateQuery: function(d) {
-      return this.getDateQuery( this.getLastSunday(d) );
+    getStartDateQuery: function() {
+      return this.getDateQuery( this.getLastSunday() );
     },
 
-    getEndDateQuery: function(d) {
-      return this.getDateQuery( this.getUpcomingMonday(d) );
+    getEndDateQuery: function() {
+      return this.getDateQuery( this.getUpcomingMonday() );
     }
   };
 }());
