@@ -9,15 +9,8 @@
 	padding-top: 10px;
 }
 
-.message, .days-label, .congrats {
+.message, .congrats {
   padding-bottom: 5px;
-}
-
-span.days {
-	font-size: .7em;
-	word-spacing: 6.6em;
-	position: relative;
-	left: 4.25em;
 }
 
 .progress {
