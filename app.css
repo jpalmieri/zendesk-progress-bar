@@ -21,6 +21,10 @@
   background-color: #78A300;
 }
 
+.author-link {
+  margin-top: 10px;
+}
+
 input.enter-goal {
   padding: 1% 5px 1% 5px;
   width: 75%;
