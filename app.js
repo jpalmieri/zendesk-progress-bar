@@ -44,10 +44,10 @@
     },
 
     init: function() {
-      // Validation for start day. Defaults to 0
+      // Validation for start day setting. Defaults to 1 (Monday).
       this.startDay = this.setting('start_day');
       if (this.startDay < 0 || this.startDay > 6) { this.startDay = 1 }
-      
+
       if ( !this.store('goal') ){
         this.showEnterGoal();
       } else {
@@ -94,16 +94,20 @@
     // Date helpers
 
     getStartDate: function() {
-      var today = new Date(),
-      // Get date of start day by subtracting days since start day
-          daysAfterStartDay = today.getDay() - this.startDay;
-      // Set to 7 to avoid negative when moving backwards past 0 (Sunday) in the week
-      if (daysAfterStartDay < 0) { daysAfterStartDay =+ 7 }
+      var today = new Date();
+      // Get days since start day by counting backwards in the week
+      // E.g., for a Wednesday start day and Today is Friday
+      // (Wednesday is 3 and Friday is 5 when using getDay())
+      // daysSinceStartDay = 5 - 3, i.e., it's been 2 days since the start day
+      var daysSinceStartDay = today.getDay() - this.startDay;
+      // add 7 to avoid negative when counting backwards past 0 (Sunday) in the week
+      if (daysSinceStartDay < 0) { daysSinceStartDay =+ 7 }
       // Offset by 1 so the query is inclusive
-      startDate = today.getDate() - daysAfterStartDay - 1;
+      startDate = today.getDate() - daysSinceStartDay - 1;
       return new Date( today.setDate(startDate) );
     },
 
+    // Return the end date by moving forward one week
     getEndDate: function() {
       var startDate = this.getStartDate(),
           daysInAWeek = 7,
