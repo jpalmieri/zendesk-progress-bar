@@ -15,6 +15,11 @@
       "name": "start_day",
       "type": "number",
       "required": true
+    },
+    {
+      "name": "author-url",
+      "type": "hidden",
+      "default": "https://www.linkedin.com/in/josephpalmieri"
     }
   ]
 }
