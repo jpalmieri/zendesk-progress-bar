@@ -44,6 +44,10 @@
     },
 
     init: function() {
+      // Validation for start day. Defaults to 0
+      this.startDay = this.setting('start_day');
+      if (this.startDay < 0 || this.startDay > 6) { this.startDay = 1 }
+      
       if ( !this.store('goal') ){
         this.showEnterGoal();
       } else {
@@ -91,9 +95,8 @@
 
     getStartDate: function() {
       var today = new Date(),
-          startDay = this.setting('start_day'),
       // Get date of start day by subtracting days since start day
-          daysAfterStartDay = today.getDay() - startDay;
+          daysAfterStartDay = today.getDay() - this.startDay;
       // Set to 7 to avoid negative when moving backwards past 0 (Sunday) in the week
       if (daysAfterStartDay < 0) { daysAfterStartDay =+ 7 }
       // Offset by 1 so the query is inclusive
