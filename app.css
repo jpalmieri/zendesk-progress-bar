@@ -9,15 +9,8 @@
 	padding-top: 10px;
 }
 
-.message, .days-label, .congrats {
+.message, .congrats {
   padding-bottom: 5px;
-}
-
-span.days {
-	font-size: .7em;
-	word-spacing: 6.6em;
-	position: relative;
-	left: 4.25em;
 }
 
 .progress {
@@ -28,6 +21,10 @@ span.days {
   background-color: #78A300;
 }
 
+.author-link {
+  margin-top: 10px;
+}
+
 input.enter-goal {
   padding: 1% 5px 1% 5px;
   width: 75%;
@@ -35,6 +32,7 @@ input.enter-goal {
 
 button.enter-goal {
   width: 20%;
+  margin-top: 0;
 }
 
 .congrats img {

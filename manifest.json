@@ -9,5 +9,12 @@
   "private": false,
   "location": "ticket_sidebar",
   "version": "0.1.2",
-  "frameworkVersion": "1.0"
+  "frameworkVersion": "1.0",
+  "parameters": [
+    {
+      "name": "author-url",
+      "type": "hidden",
+      "default": "https://www.linkedin.com/in/josephpalmieri"
+    }
+  ]
 }

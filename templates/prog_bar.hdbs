@@ -6,10 +6,7 @@
 <div class='progress progress-striped'>
   <div class='bar' style='width: {{percentSolved}}%;'></div>
 </div>
-<div class='days-label'>
-  Day <span class='days'>1 2 3 4 5</span>
-</div>
-<small class='pull-right'>by
-  <a href='https://github.com/jpalmieri' target='_blank' class='muted'>{{author.name}}</a>
+<small class='pull-right author-link'>by
+  <a href="{{setting 'author-url'}}" target='_blank' class='muted'>{{author.name}}</a>
 </small>
 <button class='change-goal btn btn-success'>Change Goal</button>
