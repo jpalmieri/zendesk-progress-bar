@@ -89,20 +89,24 @@
 
     // Date helpers
 
-    getLastSunday: function() {
+    getStartDate: function() {
       var today = new Date(),
-          sunday = 0,
-          offset = today.getDay() === sunday ? -7 : 0,
-          startDate = today.getDate() - today.getDay() + offset;
+          startDay = this.setting('start_day'),
+      // Get date of start day by subtracting days since start day
+          daysAfterStartDay = today.getDay() - startDay;
+      // Set to 7 to avoid negative when moving backwards past 0 (Sunday) in the week
+      if (daysAfterStartDay < 0) { daysAfterStartDay =+ 7 }
+      // Offset by 1 so the query is inclusive
+      startDate = today.getDate() - daysAfterStartDay - 1;
       return new Date( today.setDate(startDate) );
     },
 
-    getUpcomingMonday: function() {
-      var today = new Date(),
-          sunday = 0,
-          offset = today.getDay() === sunday ? 1 : 8,
-          endDate = today.getDate() - today.getDay() + offset;
-      return new Date( today.setDate(endDate) );
+    getEndDate: function() {
+      var startDate = this.getStartDate(),
+          daysInAWeek = 7,
+          // Offset by 1 so the query is inclusive
+          endDate = startDate.getDate() + daysInAWeek + 1;
+      return new Date( startDate.setDate(endDate) );
     },
 
     getDateQuery: function(d) {
@@ -110,11 +114,11 @@
     },
 
     getStartDateQuery: function() {
-      return this.getDateQuery( this.getLastSunday() );
+      return this.getDateQuery( this.getStartDate() );
     },
 
     getEndDateQuery: function() {
-      return this.getDateQuery( this.getUpcomingMonday() );
+      return this.getDateQuery( this.getEndDate() );
     }
   };
 }());
