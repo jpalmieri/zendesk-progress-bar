@@ -12,6 +12,11 @@
   "frameworkVersion": "1.0",
   "parameters": [
     {
+      "name": "start_day",
+      "type": "number",
+      "required": true
+    },
+    {
       "name": "author-url",
       "type": "hidden",
       "default": "https://www.linkedin.com/in/josephpalmieri"

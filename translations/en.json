@@ -1,6 +1,9 @@
 {
   "app": {
     "description":  "Progress bar showing solved tickets for agents.",
-    "name":         "Progress Bar"
+    "name":         "Progress Bar",
+    "parameters": {
+      "start_day": { "label": "First day of week (as a single-digit number)", "helpText": "1 = Monday, 2 = Tuesday...6 = Saturday. Defaults to Monday. Entering a number higher than 6 or less than 1 will cause the app to default to Monday."}
+    }
   }
 }

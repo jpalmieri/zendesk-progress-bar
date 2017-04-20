@@ -44,16 +44,19 @@
     },
 
     init: function() {
+      // Validation for start day setting. Defaults to 1 (Monday).
+      this.startDay = this.setting('start_day');
+      if (this.startDay < 0 || this.startDay > 6) { this.startDay = 1; }
+
       if ( !this.store('goal') ){
         this.showEnterGoal();
       } else {
         this.switchTo('loading');
 
-        var today = new Date();
         this.getSolvedTickets(
           this.currentUser().email(),
-          this.getStartDateQuery(today),
-          this.getEndDateQuery(today)
+          this.getStartDateQuery(),
+          this.getEndDateQuery()
         );
       }
     },
@@ -90,30 +93,39 @@
 
     // Date helpers
 
-    getLastSunday: function(d) {
-      d = new Date(d);
-      var day = d.getDay(),
-        diff = d.getDate() - day + (day === 0 ? -7 : 0);
-      return new Date( d.setDate(diff) );
+    getStartDate: function() {
+      var today = new Date();
+      // Get days since start day by counting backwards in the week
+      // E.g., for a Wednesday start day and Today is Friday
+      // (Wednesday is 3 and Friday is 5 when using getDay())
+      // daysSinceStartDay = 5 - 3, i.e., it's been 2 days since the start day
+      var daysSinceStartDay = today.getDay() - this.startDay;
+      // add 7 to avoid negative when counting backwards past 0 (Sunday) in the week
+      if (daysSinceStartDay < 0) { daysSinceStartDay =+ 7; }
+      // Offset by 1 so the query is inclusive
+      var startDate = today.getDate() - daysSinceStartDay - 1;
+      return new Date( today.setDate(startDate) );
     },
 
-    getUpcomingMonday: function(d) {
-      d = new Date(d);
-      var day = d.getDay(),
-        diff = d.getDate() - day + (day === 0 ? 1 : 8);
-      return new Date( d.setDate(diff) );
+    // Return the end date by moving forward one week
+    getEndDate: function() {
+      var startDate = this.getStartDate(),
+          daysInAWeek = 7,
+          // Offset by 1 so the query is inclusive
+          endDate = startDate.getDate() + daysInAWeek + 1;
+      return new Date( startDate.setDate(endDate) );
     },
 
     getDateQuery: function(d) {
       return ( d.getFullYear() + "-" + ( d.getMonth() + 1 ) + "-" + d.getDate() );
     },
 
-    getStartDateQuery: function(d) {
-      return this.getDateQuery( this.getLastSunday(d) );
+    getStartDateQuery: function() {
+      return this.getDateQuery( this.getStartDate() );
     },
 
-    getEndDateQuery: function(d) {
-      return this.getDateQuery( this.getUpcomingMonday(d) );
+    getEndDateQuery: function() {
+      return this.getDateQuery( this.getEndDate() );
     }
   };
 }());
