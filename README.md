@@ -1,4 +1,14 @@
-##Zendesk solved ticket progress bar
+⛔️ I AM NOT ACTIVELY DEVELOPING THIS APP ⛔️
+
+However, I'll still review pull requests and keep an eye on issues. 👍
+
+If there's a feature that you'd like to see in this app, please add an [issue]("/jpalmieri/zendesk-progress-bar/issues"). If you'd like to contribute, please take a look at the issues and find one that is marked "Help Wanted", and submit a PR for that issue.
+
+Also, please note that _this app is not officially supported by Zendesk_. I am a third-party developer who created this app to help my team. Although the app is listed in the Zendesk marketplace, I am not affiliated with Zendesk and (as far as I know) they do not have any plans to develop this app.
+
+Now, with that out of the way, back to our regularly scheduled program...
+
+## Zendesk solved ticket progress bar
 
 This is an app for [Zendesk](https://www.zendesk.com/). The app displays on the user page and is updated upon page load with the amount of solved tickets for the current workweek.
 
