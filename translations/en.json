@@ -2,6 +2,8 @@
   "app": {
     "description":  "Progress bar showing solved tickets for agents.",
     "name":         "Progress Bar",
+    "installation_instructions": "* Locate the app in the Zendesk Apps Marketplace, click on it and then click on \"Install\".\n* If you would like to have the workweek start on a day other than Monday (which is the default), change this number in the app settings\n* \"0\" for Sunday, \"1\" for Monday...\"6\" for Saturday.\n* Do not enter a number greater than 6 or less than 0.\n* Once installed, open a ticket. The app should appear in the right sidebar with text \"Solved Ticket Progress Bar\".\n* Enter your goal for the week in the text box and click \"Submit\" or press the enter key.\n* Solve tickets! You'll see the bar fill up as you get closer to your goal.\n",
+    "long_description": "Progress bar helps you keep track of your ticket goals when answering tickets. Set a goal for solved tickets per week and visualize your progress in the ticket sidebar.\n\nWhen you reach your ticket goal, a congratulatory message will appear!",
     "parameters": {
       "start_day": { "label": "First day of week (as a single-digit number)", "helpText": "1 = Monday, 2 = Tuesday...6 = Saturday. Defaults to Monday. Entering a number higher than 6 or less than 1 will cause the app to default to Monday."}
     }
