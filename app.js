@@ -48,11 +48,11 @@
       this.startDay = this.setting('start_day');
       if (this.startDay < 0 || this.startDay > 6) { this.startDay = 1; }
 
-      if ( !this.store('goal') ){
+      var weeklyGoal = this.getTicketGoal();
+      if (!weeklyGoal){
         this.showEnterGoal();
       } else {
         this.switchTo('loading');
-
         this.getSolvedTickets(
           this.currentUser().email(),
           this.getStartDateQuery(),
@@ -61,8 +61,12 @@
       }
     },
 
+    getTicketGoal: function() {
+      return this.setting('default_ticket_goal') || this.store('goal');
+    },
+
     showBar: function(solvedTickets) {
-      var weeklyGoal = this.store('goal');
+      var weeklyGoal = this.getTicketGoal();
       var template = (solvedTickets.count >= weeklyGoal) ? 'congrats' : 'prog_bar';
 
       this.switchTo(template, {
@@ -70,7 +74,8 @@
         ticketsPlural: solvedTickets.count != 1,
         weeklyGoal: weeklyGoal,
         percentSolved: (solvedTickets.count / weeklyGoal) * 100,
-        congratsImg: this.getRandomCongratsImg()
+        congratsImg: this.getRandomCongratsImg(),
+        allowUserDefinedGoals: !this.setting('default_ticket_goal')
       });
     },
 
