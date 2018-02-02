@@ -27,6 +27,7 @@ Once the goal is reached, a congratulatory message will display. :D
 ### Installation
 
 _Note: Zendesk is no longer allowing uploads of v1 app framework apps, so you will no be able to package and upload this app. To use the app, please install the standard version from the app marketplace:_
+https://www.zendesk.com/apps/solved-tickets-progress-bar/
 
 1. ~~Compress all files into a .zip (`zat package` is good for this. [Zendesk Apps Tools](https://support.zendesk.com/hc/en-us/articles/203691236-Installing-and-using-the-Zendesk-apps-tools)).~~
 
