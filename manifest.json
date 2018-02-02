@@ -17,6 +17,11 @@
       "required": true
     },
     {
+      "name": "default_ticket_goal",
+      "type": "number",
+      "required": false
+    },
+    {
       "name": "author-url",
       "type": "hidden",
       "default": "https://www.linkedin.com/in/josephpalmieri"

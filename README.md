@@ -12,7 +12,9 @@ Now, with that out of the way, back to our regularly scheduled program...
 
 This is an app for [Zendesk](https://www.zendesk.com/). The app displays on the user page and is updated upon page load with the amount of solved tickets for the current workweek.
 
-When the app is started for the first time, the agent is asked to input their goal for the week (which is saved in local storage). From then on, a progress bar will be shown to the agent, which shows the number of solved (as well as closed) tickets assigned to that agent during that week (Mon thrugh Sun), as compared to their entered goal.
+A progress bar will be shown to the agent, which shows the number of solved (as well as closed) tickets assigned to that agent during that week (Mon thrugh Sun), as compared to their set goal.
+
+An admin can set the ticket goal in the app's settings. If this setting is not set, the agent is asked to set their own goal (which is then saved in local storage). If the admin sets a goal in the app's settings after the agent has set their own goal, the admin goal will override the agent goal.
 
 Once the goal is reached, a congratulatory message will display. :D
 
@@ -24,11 +26,19 @@ Once the goal is reached, a congratulatory message will display. :D
 
 ### Installation
 
-1. Compress all files into a .zip (`zat package` is good for this. [Zendesk Apps Tools](https://support.zendesk.com/hc/en-us/articles/203691236-Installing-and-using-the-Zendesk-apps-tools)).
+_Note: Zendesk is no longer allowing uploads of v1 app framework apps, so you will no be able to package and upload this app. To use the app, please install the standard version from the app marketplace:_
+https://www.zendesk.com/apps/solved-tickets-progress-bar/
 
-2. Upload file to `http://[subdomain].zendesk.com/agent/admin/apps/manage`.
+1. ~~Compress all files into a .zip (`zat package` is good for this. [Zendesk Apps Tools](https://support.zendesk.com/hc/en-us/articles/203691236-Installing-and-using-the-Zendesk-apps-tools)).~~
 
-3. Optionally, add role restrictions.
+1. ~~Upload file to `http://[subdomain].zendesk.com/agent/admin/apps/manage`.~~
+
+1. Set the start date of the week.
+
+1. Set the ticket goal (for all users, optional).
+
+1. Add role restrictions (optional).
+
 
 ### Caveats and issues
 

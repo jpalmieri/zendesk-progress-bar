@@ -9,4 +9,6 @@
 <small class='pull-right author-link'>by
   <a href="{{setting 'author-url'}}" target='_blank' class='muted'>{{author.name}}</a>
 </small>
-<button class='change-goal btn btn-success'>Change Goal</button>
+{{#if allowUserDefinedGoals}}
+  <button class='change-goal btn btn-success'>Change Goal</button>
+{{/if}}

@@ -16,8 +16,9 @@ When you reach your ticket goal, a congratulatory message will appear!
 * If you would like to have the workweek start on a day other than Monday (which is the default), change this number in the app settings
 * "0" for Sunday, "1" for Monday..."6" for Saturday.
 * Do not enter a number greater than 6 or less than 0.
+* Optionally, set a ticket goal for your entire team. If no goal is set, each agent will be asked to enter a goal.
 * Once installed, open a ticket. The app should appear in the right sidebar with text "Solved Ticket Progress Bar".
-* Enter your goal for the week in the text box and click "Submit" or press the enter key.
+* If no admin goal was entered, enter your goal for the week in the text box and click "Submit" or press the enter key.
 * Solve tickets! You'll see the bar fill up as you get closer to your goal.
 
 ##### Notes:
